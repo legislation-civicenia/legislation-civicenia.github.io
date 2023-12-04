@@ -1,0 +1,7 @@
+baseURL = 'https://example.org/'
+languageCode = 'en-us'
+title = 'Icenian Legislation'
+theme = 'fluency'
+
+[outputs]
+    home = ["HTML", "RSS", "JSON"]

@@ -1,0 +1,29 @@
+{{ $bootstrapCss := resources.Get "css/bootstrap.css" }}
+{{ $mainCss := resources.Get "css/main.css" }}
+{{ $bundledCss := slice $bootstrapCss $mainCss | resources.Concat "css/bundled.css" }}
+
+{{ if not site.IsServer }}
+  {{ $bundledCss = $bundledCss | minify | fingerprint }}
+{{ end }}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    {{ hugo.Generator }}
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{{ .Title }} | {{ site.Title }}</title>
+
+    <link rel="stylesheet" href="{{ $bundledCss.RelPermalink }}" integrity="{{ $bundledCss.Data.Integrity }}"></link>
+  </head>
+
+  <body>
+    <div class="container">
+      {{ block "main" . }}{{ end }}
+    </div>
+
+    {{ partial "scripts.html" . }}
+  </body>
+</html>

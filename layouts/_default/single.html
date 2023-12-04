@@ -1,0 +1,20 @@
+{{ define "main" }}
+<head>
+  <style type="text/css">
+     a:link {color: black;}      /* unvisited link */
+     a:visited {color: black;}   /* visited link */
+     a:hover {color: black;}     /* mouse over link */
+     a:active {color: black;}    /* selected link */
+  </style>
+  <h1><img src="/images/seal.png" alt="seal" width="64" height="64"/><a href="https://legislation-civicenia.github.io/legislation-civicenia">Icenian legislation</a></h1>
+  <br>
+</head>
+
+
+  <h1>{{ .Title }}</h1>
+
+  <br>
+  <br>
+
+  {{ .Content }}
+{{ end }}
